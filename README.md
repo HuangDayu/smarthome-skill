@@ -1,6 +1,5 @@
-# skill
-## skill json entity
-### 添加库到maven
+# Voice Interaction SmartHome Skill JsonBean
+
 ```xml
 <repositories>
 	<repository>
@@ -11,7 +10,6 @@
 ```
 
 ```xml
-<!-- 智能家居技能 jsonbean -->
 <dependency>
 	<groupId>com.github.huangdayu</groupId>
 	<artifactId>skill</artifactId>
