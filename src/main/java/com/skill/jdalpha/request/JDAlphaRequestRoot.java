@@ -1,5 +1,5 @@
 package com.skill.jdalpha.request;
-public class JDAlphaRequestRootBean {
+public class JDAlphaRequestRoot {
 
     private Header header;
     private Payload payload;
