@@ -1,0 +1,21 @@
+{
+    "header": {
+        "messageId": "6d6d6e14-8aee-473e-8c24-0d31ff9c17a2",
+        "name": "DiscoverAppliancesRequest",
+        "namespace": "Vpa.Smarthome.Discovery",
+        "payloadVersion": "1"
+    },
+    "payload": {
+        "accessToken": "*OAuth Token here*",
+        "appliance": {
+            "additionalApplianceDetails": {},
+            "applianceId": "[Device ID]"
+        },
+        "deltaTemperature": {
+            "value": 2
+        },
+        "targetTemperature": {
+            "value": 25
+        }
+    }
+}

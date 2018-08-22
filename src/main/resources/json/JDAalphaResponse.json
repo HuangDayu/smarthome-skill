@@ -1,0 +1,72 @@
+{
+    "header": {
+        "messageId": "xxxxxxxxxxxxxxxxxxxx",
+        "name": "DiscoveryDevicesResponse",
+        "namespace": "Alpha.Iot.Device.Query",
+        "payLoadVersion": "1"
+    },
+    "payload": {
+        "DeviceInfo": [
+            {
+                "actions": [
+                    "turnOn",
+                    "turnOff",
+                    "incrementBrightnessPercentage",
+                    "decrementBrightnessPercentage"
+                ],
+                "controlSpeech": [
+                    "打开ted",
+                    "turnOff",
+                    "incrementBrightnessPercentage",
+                    "decrementBrightnessPercentage"
+                ],
+                "deviceId": "uniqueLightDeviceId",
+                "deviceTypes": "卧室的灯",
+                "extensions": {
+                    "hardwareName": "optionalDetailForSkillAdapterToReferenceThisDevice",
+                    "hardwareID": "There can be multiple entries",
+                    "firmwareVersion": "but they should only be used for reference purposes",
+                    "hardwareStatus": "This is not a suitable place to maintain current device state"
+                },
+                "friendlyDescription": "展现给用户的详细介绍",
+                "friendlyName": "卧室的灯",
+                "isReachable": true,
+                "modelName": "fancyLight"
+            },
+            {
+                "actions": [
+                    "turnOn",
+                    "turnOff",
+                    "incrementBrightnessPercentage",
+                    "decrementBrightnessPercentage"
+                ],
+                "controlSpeech": [
+                    "打开ted",
+                    "turnOff",
+                    "incrementBrightnessPercentage",
+                    "decrementBrightnessPercentage"
+                ],
+                "deviceId": "uniqueLightDeviceId",
+                "deviceTypes": "卧室的灯",
+                "extensions": {
+                    "hardwareName": "optionalDetailForSkillAdapterToReferenceThisDevice",
+                    "hardwareID": "There can be multiple entries",
+                    "firmwareVersion": "but they should only be used for reference purposes",
+                    "hardwareStatus": "This is not a suitable place to maintain current device state"
+                },
+                "friendlyDescription": "展现给用户的详细介绍",
+                "friendlyName": "卧室的灯",
+                "isReachable": true,
+                "modelName": "fancyLight"
+            }
+        ],
+        "deviceId": "device_id",
+        "errorCode": "IOT_DEVICE_OFFLINE",
+        "message": "xxxxx",
+        "properties": {
+            "name": "PowerState",
+            "value": "ON"
+        },
+        "result": "SUCCESS"
+    }
+}
