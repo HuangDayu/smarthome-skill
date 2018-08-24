@@ -10,6 +10,5 @@ public class TargetMode {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
-	
+
 }

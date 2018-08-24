@@ -3,7 +3,7 @@ package com.skill.dueros.request;
 public class TargetTemperature {
 	private Object value;
 
-    private String scale;
+	private String scale;
 
 	public Object getValue() {
 		return value;

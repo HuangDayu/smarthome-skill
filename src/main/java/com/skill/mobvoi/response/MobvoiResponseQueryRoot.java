@@ -3,7 +3,7 @@ package com.skill.mobvoi.response;
 public class MobvoiResponseQueryRoot {
 	private MobvoiResponseHeader header;
 
-    private MobvoiResponseQueryPayload payload;
+	private MobvoiResponseQueryPayload payload;
 
 	public MobvoiResponseHeader getHeader() {
 		return header;
@@ -20,6 +20,5 @@ public class MobvoiResponseQueryRoot {
 	public void setPayload(MobvoiResponseQueryPayload payload) {
 		this.payload = payload;
 	}
-    
-    
+
 }

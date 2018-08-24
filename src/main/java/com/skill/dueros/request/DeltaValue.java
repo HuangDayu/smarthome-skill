@@ -1,25 +1,24 @@
 package com.skill.dueros.request;
 
 public class DeltaValue {
-	 	private Object value;
-	 	
-	    private String scale;
+	private Object value;
 
-		public Object getValue() {
-			return value;
-		}
+	private String scale;
 
-		public void setValue(Object value) {
-			this.value = value;
-		}
+	public Object getValue() {
+		return value;
+	}
 
-		public String getScale() {
-			return scale;
-		}
+	public void setValue(Object value) {
+		this.value = value;
+	}
 
-		public void setScale(String scale) {
-			this.scale = scale;
-		}
+	public String getScale() {
+		return scale;
+	}
 
+	public void setScale(String scale) {
+		this.scale = scale;
+	}
 
 }

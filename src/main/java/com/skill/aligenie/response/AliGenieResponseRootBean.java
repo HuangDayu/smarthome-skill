@@ -6,6 +6,7 @@ public class AliGenieResponseRootBean {
 
 	private AliGenieResponseHeader header;
 	private AliGenieResponsePayload payload;
+	private List<AliGenieResponseProperties> properties;
 
 	public void setHeader(AliGenieResponseHeader header) {
 		this.header = header;
@@ -22,8 +23,6 @@ public class AliGenieResponseRootBean {
 	public AliGenieResponsePayload getPayload() {
 		return payload;
 	}
-
-	private List<AliGenieResponseProperties> properties;
 
 	public List<AliGenieResponseProperties> getProperties() {
 		return properties;

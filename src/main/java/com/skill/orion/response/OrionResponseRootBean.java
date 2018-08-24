@@ -6,6 +6,7 @@ public class OrionResponseRootBean {
 
 	private OrionResponseHeader header;
 	private OrionResponsePayload payload;
+	private List<OrionResponseProperties> properties;
 
 	public void setHeader(OrionResponseHeader header) {
 		this.header = header;
@@ -22,8 +23,6 @@ public class OrionResponseRootBean {
 	public OrionResponsePayload getPayload() {
 		return payload;
 	}
-
-	private List<OrionResponseProperties> properties;
 
 	public List<OrionResponseProperties> getProperties() {
 		return properties;
