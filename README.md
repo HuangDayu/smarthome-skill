@@ -25,4 +25,5 @@
 - [若琪Rokid](https://developer.rokid.com)
 - [出门问问Mobvoi](https://ai.chumenwenwen.com/)
 - [猎豹Orion](https://voiceos.ainirobot.com/) 
-- [京东JDAlpha](http://alphadev.jd.com/skill)
+- [京东JDAlpha](http://alphadev.jd.com/skill)  
+- [思必驰DUI](https://www.dui.ai/)  
