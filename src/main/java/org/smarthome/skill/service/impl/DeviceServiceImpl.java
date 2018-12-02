@@ -3,9 +3,10 @@ package org.smarthome.skill.service.impl;
 import java.util.Map;
 
 import org.smarthome.skill.enums.SkillPlatformEnum;
+import org.smarthome.skill.service.DeviceService;
 import org.smarthome.skill.service.SmartHomeSkillService;
 
-public class SmartHomeSkillServiceImpl implements SmartHomeSkillService{
+public class DeviceServiceImpl implements DeviceService{
 
 	public Object discovery(SkillPlatformEnum spEnum, String json) {
 		// TODO Auto-generated method stub

@@ -1,34 +1,34 @@
 package org.smarthome.skill.service;
 
-import java.util.Map;
-
-import org.smarthome.skill.enums.SkillPlatformEnum;
+import java.util.List;
+import org.smarthome.skill.entity.DeviceEntity;
+import org.smarthome.skill.entity.KVEntity;
 
 public interface SmartHomeSkillService {
+	
 	/***
 	 * 发现设备
-	 * 
-	 * @param spEnum
-	 * @param json
+	 * @param token
 	 * @return
 	 */
-	Object discovery(SkillPlatformEnum spEnum, String json);
-
-	/***
+	List<DeviceEntity> discoveryDevice(String token);
+	/**
 	 * 控制设备
-	 * 
-	 * @param spEnum
-	 * @param json
-	 * @return 四个值：控制指令，设备ID，设备位置，属性值
-	 */
-	Map<String, Object> control(SkillPlatformEnum spEnum, String json);
-
-	/***
-	 * 查询设备状态
-	 * 
-	 * @param spEnum
-	 * @param json
+	 * @param token
+	 * @param order 指令
+	 * @param deviceID 设备ID
+	 * @param devicePlace 设备位置
+	 * @param deviceValue 设备属性值
 	 * @return
 	 */
-	Object query(SkillPlatformEnum spEnum, String json);
+	boolean controlDevice(String token,String order,String deviceID,String devicePlace,String deviceValue);
+	
+	/***
+	 * 查询设备状态和属性信息
+	 * @param token
+	 * @param order 指令
+	 * @param deviceID 设备ID
+	 * @return
+	 */
+	KVEntity queryDevice(String token,String order,String deviceID);
 }
