@@ -10,18 +10,17 @@ import java.io.InputStreamReader;
 import javax.servlet.http.HttpServletRequest;
 
 public class SmartHomeSkill {
-	private SkillPlatformEnum spEnum;
-	private String json;
-
+	
+	private SmartHomeSkill() {};
+	
 	/***
 	 * 使用序列化后的josn字符串作为参数
 	 * 
 	 * @param spEnum
 	 * @param json
 	 */
-	public SmartHomeSkill(SkillPlatformEnum spEnum, String json) {
-		this.spEnum = spEnum;
-		this.json = json;
+	public static Object skillOperation(SmartHomeSkillService smartHomeSkillService,SkillPlatformEnum spEnum, String json) {
+		return skillOperation(spEnum,json,smartHomeSkillService);
 	}
 
 	/***
@@ -31,7 +30,7 @@ public class SmartHomeSkill {
 	 * @param request
 	 * @throws IOException
 	 */
-	public SmartHomeSkill(SkillPlatformEnum spEnum, HttpServletRequest request) throws IOException {
+	public static Object skillOperation(SmartHomeSkillService smartHomeSkillService,SkillPlatformEnum spEnum, HttpServletRequest request) throws IOException {
 		StringBuffer stringBuffer = new StringBuffer();
 		InputStream inputStream = request.getInputStream();
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -41,17 +40,16 @@ public class SmartHomeSkill {
 			stringBuffer.append(st1r);
 		}
 		String str2 = stringBuffer.toString();
-		this.spEnum = spEnum;
-		this.json = str2;
+		return skillOperation(spEnum,str2,smartHomeSkillService);
 	}
 
-	public Object skillOperation() {
-		switch (this.getSpEnum()) {
+	public static Object skillOperation(SkillPlatformEnum spEnum,String json,SmartHomeSkillService smartHomeSkillService) {
+		switch (spEnum) {
 		case BAIDU_DUEROS:// 百度DuerOS
-
+			smartHomeSkillService.discoveryDevice("-----------baidu--------------");
 			break;
 		case TMALL_ALIGENIE:// 天猫AliGenie
-
+			smartHomeSkillService.discoveryDevice("-----------tamll--------------");
 			break;
 		case XIAOMI_SKILL:// 小米IOT
 
@@ -77,21 +75,5 @@ public class SmartHomeSkill {
 		}
 		return null;
 	}
-
-	public SkillPlatformEnum getSpEnum() {
-		return spEnum;
-	}
-
-	public void setSpEnum(SkillPlatformEnum spEnum) {
-		this.spEnum = spEnum;
-	}
-
-	public String getJson() {
-		return json;
-	}
-
-	public void setJson(String json) {
-		this.json = json;
-	};
 	
 }

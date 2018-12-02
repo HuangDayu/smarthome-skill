@@ -9,7 +9,6 @@ import org.smarthome.skill.service.SmartHomeSkillService;
 public class DeviceServiceImpl implements DeviceService{
 
 	public Object discovery(SkillPlatformEnum spEnum, String json) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
