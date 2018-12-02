@@ -1,0 +1,54 @@
+{
+    "endpoint": {
+        "additionalInfo": {
+            "key1": "value1"
+        },
+        "endpointId": "unique-id-for-user",
+        "states": [
+            {
+                "interface": "Color",
+                "timeOfSample": "20180320T00:00:00.000Z",
+                "value": 12345
+            },
+            {
+                "interface": "Switch",
+                "timeOfSample": "2018-07-20T11:01:32.032Z",
+                "value": "On"
+            },
+            {
+                "interface": "Mode",
+                "timeOfSample": "2018-07-20T11:01:32.032Z",
+                "value": "auto"
+            },
+            {
+                "interface": "SwingMode",
+                "timeOfSample": "2018-07-20T11:01:32.032Z",
+                "value": "On"
+            },
+            {
+                "interface": "Temperature",
+                "timeOfSample": "2018-07-20T11:01:32.032Z",
+                "value": "25"
+            },
+            {
+                "interface": "FanSpeed",
+                "timeOfSample": "2018-07-20T11:01:32.032Z",
+                "value": "1"
+            }
+        ]
+    },
+    "header": {
+        "authorization": {
+            "token": "a-token-from-skill",
+            "type": "BearerToken"
+        },
+        "messageId": "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4",
+        "name": "Color.Set",
+        "namespace": "Rokid.Control",
+        "payloadVersion": "v1"
+    },
+    "payload": {
+        "delta": -1,
+        "value": 65280
+    }
+}

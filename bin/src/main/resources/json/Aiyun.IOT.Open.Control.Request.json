@@ -1,0 +1,13 @@
+{
+    "header": {
+        "messageId": "b330d662-2cdb-41ef-a1cf-1795ffb15de1",
+        "name": "SetMode",
+        "namespace": "Aiyun.IOT.Open.Control",
+        "payloadVersion": "v1"
+    },
+    "payload": {
+        "accessToken": "27F7533B2F6081BF48624790C05AD567",
+        "deviceId": "2082",
+        "value": "airsupply"
+    }
+}

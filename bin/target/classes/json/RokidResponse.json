@@ -1,0 +1,67 @@
+{
+    "endpoint": {
+        "endpointId": "unique-id-for-user",
+        "states": [
+            {
+                "interface": "Color",
+                "timeOfSample": "20180320T00:00:00.000Z",
+                "value": 12345
+            }
+        ]
+    },
+    "header": {
+        "messageId": "123-456",
+        "name": "Response",
+        "namespace": "Rokid",
+        "payloadVersion": "v1"
+    },
+    "payload": {
+        "debugInfo": "something for debug",
+        "endpoints": [
+            {
+                "additionalInfo": {
+                    "key1": "value"
+                },
+                "capabilities": [
+                    {
+                        "interface": "Switch",
+                        "proactivelyReported": true,
+                        "retrievable": true,
+                        "supportedOperations": [
+                            "On",
+                            "Off"
+                        ]
+                    },
+                    {
+                        "interface": "Color",
+                        "proactivelyReported": true,
+                        "retrievable": true,
+                        "supportedOperations": [
+                            "Set"
+                        ]
+                    }
+                ],
+                "displayName": "大米台灯",
+                "displayType": "light",
+                "endpointId": "device:an-id-unique-to-user",
+                "modelId": "GROSS-REIS-LAMPE-ALPHA",
+                "recommendRoomName": "厨房",
+                "states": [
+                    {
+                        "interface": "Switch",
+                        "timeOfSample": "2018-03-15T18:00:00.000Z",
+                        "value": "On"
+                    },
+                    {
+                        "interface": "Color",
+                        "timeOfSample": "2018-03-15T18:00:00.000Z",
+                        "value": 12345
+                    }
+                ]
+            }
+        ],
+        "message": "发生了一些不可告人的错误",
+        "name": "E_DRIVER_ERROR",
+        "vendorCode": "origin-error-code"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "header": {
+        "messageId": "1bd5d003-31b9-476f-ad03-71d471922820",
+        "name": "TurnOff",
+        "namespace": "AliGenie.Iot.Device.Control",
+        "payLoadVersion": 1
+    },
+    "payload": {
+        "accessToken": "access token",
+        "attribute": "powerstate",
+        "deviceId": "34234",
+        "deviceType": "XXX",
+        "extensions": {
+            "extension1": "",
+            "extension2": ""
+        },
+        "value": "off"
+    }
+}
