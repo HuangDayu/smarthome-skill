@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.smarthome.skill.entity.DeviceEntity;
 import org.smarthome.skill.entity.KVEntity;
+import org.smarthome.skill.enums.ResultDTO;
 import org.smarthome.skill.service.SmartHomeSkillService;
 
 public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
@@ -13,9 +14,9 @@ System.out.println(token);
 		return null;
 	}
 
-	public boolean controlDevice(String token, String order, String deviceID, String devicePlace, String deviceValue) {
+	public ResultDTO controlDevice(String token, String order, String deviceID, String devicePlace, String deviceValue) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	public KVEntity queryDevice(String token, String order, String deviceID) {

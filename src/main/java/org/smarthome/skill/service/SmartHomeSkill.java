@@ -1,5 +1,6 @@
 package org.smarthome.skill.service;
 
+import org.smarthome.skill.enums.ResultDTO;
 import org.smarthome.skill.enums.SkillPlatformEnum;
 
 import java.io.BufferedReader;
@@ -44,6 +45,9 @@ public class SmartHomeSkill {
 	}
 
 	public static Object skillOperation(SkillPlatformEnum spEnum,String json,SmartHomeSkillService smartHomeSkillService) {
+		if(json==null||json.equals("")) {
+			return ResultDTO.entiey(-4);
+		}
 		switch (spEnum) {
 		case BAIDU_DUEROS:// 百度DuerOS
 			smartHomeSkillService.discoveryDevice("-----------baidu--------------");

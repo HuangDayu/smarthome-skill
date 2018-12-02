@@ -1,15 +1,22 @@
 package org.smarthome.skill.enums;
 
+/**
+ * 设备类型
+ * 
+ * @author Administrator
+ *
+ */
 public enum DeviceTypeEnum {
-	ay_scene, // 场景
-	ay_ir_ac, // 红外空调
-	ay_ir_tv, // 红外电视
-	ay_ir_stb, // 红外机顶盒
-	ay_ir_dvd, // 红外DVD
-	ay_ir_fan, // 红外电风扇
-	ay_ir_ap, // 红外空气净化器
-	ay_ir_iptv, // 红外电视盒子
-	ay_ir_pj, // 红外投影仪
-	ay_ir_as, // 红外音响
-	ay_ir_wh,// 红外热水器
+	SCENE, // 场景
+	OMNIPOTENT_IR, // 万能红外
+	IR_AC, // 红外空调
+	IR_TV, // 红外电视
+	IR_STB, // 红外机顶盒
+	IR_DVD, // 红外DVD
+	IR_FAN, // 红外电风扇
+	IR_AP, // 红外空气净化器
+	IR_IPTV, // 红外电视盒子
+	IR_PJ, // 红外投影仪
+	IR_AS, // 红外音响
+	IR_WH,// 红外热水器
 }

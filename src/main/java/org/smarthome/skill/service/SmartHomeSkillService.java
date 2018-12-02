@@ -3,6 +3,7 @@ package org.smarthome.skill.service;
 import java.util.List;
 import org.smarthome.skill.entity.DeviceEntity;
 import org.smarthome.skill.entity.KVEntity;
+import org.smarthome.skill.enums.ResultDTO;
 
 public interface SmartHomeSkillService {
 	
@@ -21,7 +22,7 @@ public interface SmartHomeSkillService {
 	 * @param deviceValue 设备属性值
 	 * @return
 	 */
-	boolean controlDevice(String token,String order,String deviceID,String devicePlace,String deviceValue);
+	ResultDTO controlDevice(String token,String order,String deviceID,String devicePlace,String deviceValue);
 	
 	/***
 	 * 查询设备状态和属性信息
