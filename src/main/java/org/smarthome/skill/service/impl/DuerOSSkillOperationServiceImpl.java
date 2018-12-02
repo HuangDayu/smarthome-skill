@@ -35,7 +35,7 @@ public class DuerOSSkillOperationServiceImpl implements SkillOperationService {
 	}
 
 	public Object discovery(String json) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
