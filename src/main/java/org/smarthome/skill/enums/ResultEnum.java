@@ -1,24 +1,25 @@
 package org.smarthome.skill.enums;
 
-public enum ResultDTO {
+public enum ResultEnum {
 	CONTROL_SUCCESS(1, "控制成功"), 
 	NO_SUCH_DEVICE(-1, "无此设备"),
 	EQUIPMENT_OFFLINE(-2, "设备离线"),
 	EQUIPMENT_FAILURE(-3, "设备故障"), 
 	PARAMETER_ERROR(-4, "参数错误"), 
 	SERVICE_FAILURE(-5, "服务故障"), 
-	UNKNOWN_ERROR(-6, "未知错误");
+	UNKNOWN_ERROR(-6, "未知错误"),
+	NO_EQUIPMENT(-7,"暂无设备");
 
 	private int code;
 	private String msg;
 
-	private ResultDTO(int code, String msg) {
+	private ResultEnum(int code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}
 
-	public static ResultDTO entiey(int code) {
-		for (ResultDTO resultDTO : ResultDTO.values()) {
+	public static ResultEnum getEnum(int code) {
+		for (ResultEnum resultDTO : ResultEnum.values()) {
 			if (resultDTO.getCode() == code) {
 				return resultDTO;
 			}
