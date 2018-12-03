@@ -29,20 +29,20 @@
 ```xml
 <dependency>
 	<groupId>com.github.huangdayu</groupId>
-	<artifactId>skill</artifactId>
+	<artifactId>smarthome-skill</artifactId>
 	<version>master-SNAPSHOT</version>
 </dependency>
 ```
 
 ## 实现接口
 
-实现`org.smarthome.skill.service.SmartHomeSkillService`接口    
+实现`cn.huangdayu.smarthome.skill.service.SmartHomeSkillService`接口    
 
 ```java
 import java.util.List;
-import org.smarthome.skill.dto.ResultDTO;
-import org.smarthome.skill.entity.DeviceEntity;
-import org.smarthome.skill.service.SmartHomeSkillService;
+import cn.huangdayu.smarthome.skill.dto.ResultDTO;
+import cn.huangdayu.smarthome.skill.entity.DeviceEntity;
+import cn.huangdayu.smarthome.skill.service.SmartHomeSkillService;
 public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 	/**
 	 * 发现设备
@@ -86,7 +86,7 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 }
 ```
 
-调用`org.smarthome.skill.service.SmartHomeSkill.skillOperation()`方法    
+调用`cn.huangdayu.smarthome.skill.service.SmartHomeSkill.skillOperation()`方法    
 
 ```java
 	/**

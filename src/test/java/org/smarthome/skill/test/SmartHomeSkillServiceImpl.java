@@ -1,9 +1,10 @@
 package org.smarthome.skill.test;
 
 import java.util.List;
-import org.smarthome.skill.dto.ResultDTO;
-import org.smarthome.skill.entity.DeviceEntity;
-import org.smarthome.skill.service.SmartHomeSkillService;
+
+import cn.huangdayu.smarthome.skill.dto.ResultDTO;
+import cn.huangdayu.smarthome.skill.entity.DeviceEntity;
+import cn.huangdayu.smarthome.skill.service.SmartHomeSkillService;
 
 public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 

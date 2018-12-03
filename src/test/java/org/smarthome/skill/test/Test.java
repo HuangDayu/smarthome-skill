@@ -1,10 +1,10 @@
 package org.smarthome.skill.test;
 
-import org.smarthome.skill.enums.SkillPlatformEnum;
-import org.smarthome.skill.service.SmartHomeSkill;
-import org.smarthome.skill.service.SmartHomeSkillService;
-
 import com.alibaba.fastjson.JSON;
+
+import cn.huangdayu.smarthome.skill.enums.SkillPlatformEnum;
+import cn.huangdayu.smarthome.skill.service.SmartHomeSkill;
+import cn.huangdayu.smarthome.skill.service.SmartHomeSkillService;
 
 public class Test {
 	static SmartHomeSkillService shss = new SmartHomeSkillServiceImpl();
