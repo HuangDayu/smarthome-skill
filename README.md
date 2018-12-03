@@ -1,8 +1,21 @@
-# Voice Interaction SmartHome Skill JsonBean
+# 智能家居技能SDK
 
 国内语音交互平台智能家居技能SDK  
 
-# 添加依赖
+# 支持的平台  
+
+- [百度DuerOS](https://dueros.baidu.com)
+- [天猫AliGenie](https://open.bot.tmall.com)
+- [小米IOT](https://iot.mi.com)
+- [若琪Rokid](https://developer.rokid.com)
+- [出门问问Mobvoi](https://ai.chumenwenwen.com/)
+- [猎豹Orion](https://voiceos.ainirobot.com/) 
+- [京东JDAlpha](http://alphadev.jd.com/skill)  
+- [思必驰DUI](https://www.dui.ai/)  
+
+# 使用方法
+
+## 添加依赖
 
 ```xml
 <repositories>
@@ -21,7 +34,7 @@
 </dependency>
 ```
 
-# 使用方法
+## 实现接口
 
 实现`org.smarthome.skill.service.SmartHomeSkillService`接口    
 
@@ -89,6 +102,8 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 	}
 ```
 
+## 调用处理结果
+
 类直接调用    
 
 ```java
@@ -100,14 +115,3 @@ public Object skillOperation(HttpServletRequest request){
 	return SmartHomeSkill.skillOperation(shss,SkillPlatformEnum.BAIDU_DUEROS,request);
 }
 ```
-
-# 支持的平台  
-
-- [百度DuerOS](https://dueros.baidu.com)
-- [天猫AliGenie](https://open.bot.tmall.com)
-- [小米IOT](https://iot.mi.com)
-- [若琪Rokid](https://developer.rokid.com)
-- [出门问问Mobvoi](https://ai.chumenwenwen.com/)
-- [猎豹Orion](https://voiceos.ainirobot.com/) 
-- [京东JDAlpha](http://alphadev.jd.com/skill)  
-- [思必驰DUI](https://www.dui.ai/)  
