@@ -24,12 +24,13 @@ public class SmartHomeSkill {
 
 	private SmartHomeSkill() {
 	};
-
-	/***
-	 * 使用序列化后的josn字符串作为参数
+	
+	/**
 	 * 
-	 * @param spEnum
-	 * @param json
+	 * @param smartHomeSkillService 接口的实现对象
+	 * @param spEnum 平台类型
+	 * @param json 使用序列化后的josn字符串作为参数
+	 * @return 响应的json对象
 	 */
 	public static Object skillOperation(SmartHomeSkillService smartHomeSkillService, SkillPlatformEnum spEnum,
 			String json) {
