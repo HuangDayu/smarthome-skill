@@ -111,5 +111,5 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 	@RequestMapping(value = "/skillOperation", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public Object skillOperation(HttpServletRequest request){
 		return SmartHomeSkill.skillOperation(new SmartHomeSkillServiceImpl(),SkillPlatformEnum.BAIDU_DUEROS,request);
-}
+	}
 ```
