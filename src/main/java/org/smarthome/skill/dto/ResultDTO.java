@@ -42,4 +42,12 @@ public class ResultDTO<T> {
 		this.msg = msg;
 	}
 
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
 }

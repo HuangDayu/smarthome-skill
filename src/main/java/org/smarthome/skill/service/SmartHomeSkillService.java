@@ -5,33 +5,35 @@ import java.util.List;
 import org.smarthome.skill.dto.ResultDTO;
 import org.smarthome.skill.entity.DeviceEntity;
 import org.smarthome.skill.entity.KVEntity;
-import org.smarthome.skill.enums.ResultEnum;
 
 public interface SmartHomeSkillService {
 	
-	/***
+	/**
 	 * 发现设备
-	 * @param token
+	 * @param accessToken
+	 * @param openUid
 	 * @return
 	 */
-	List<DeviceEntity> discoveryDevice(String token);
+	List<DeviceEntity> discoveryDevice(String accessToken,String openUid);
 	/**
 	 * 控制设备
-	 * @param token
+	 * @param accessToken
+	 * @param openUid
 	 * @param order 指令
 	 * @param deviceID 设备ID
-	 * @param devicePlace 设备位置
-	 * @param deviceValue 设备属性值
+	 * @param devicePlace 设备位置（可以为空）
+	 * @param value 设备属性值（可以为空）
 	 * @return
 	 */
-	ResultDTO<Object> controlDevice(String token,String order,String deviceID,String devicePlace,String deviceValue);
+	ResultDTO<Object> controlDevice(String accessToken,String openUid,String order,String deviceID,String devicePlace,Object value);
 	
 	/***
 	 * 查询设备状态和属性信息
-	 * @param token
+	 * @param accessToken
+	 * @param openUid
 	 * @param order 指令
 	 * @param deviceID 设备ID
 	 * @return
 	 */
-	KVEntity queryDevice(String token,String order,String deviceID);
+	ResultDTO<Object> queryDevice(String accessToken,String openUid,String order,String deviceID);
 }

@@ -8,7 +8,8 @@ public enum ResultEnum {
 	PARAMETER_ERROR(-4, "参数错误"), 
 	SERVICE_FAILURE(-5, "服务故障"), 
 	UNKNOWN_ERROR(-6, "未知错误"),
-	NO_EQUIPMENT(-7,"暂无设备");
+	NO_EQUIPMENT(-7,"暂无设备"),
+	NO_SUCH_OPERATION(-8,"无此操作");
 
 	private int code;
 	private String msg;

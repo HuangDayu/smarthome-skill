@@ -9,19 +9,23 @@ import org.smarthome.skill.service.SmartHomeSkillService;
 
 public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 
-	public List<DeviceEntity> discoveryDevice(String token) {
+	public List<DeviceEntity> discoveryDevice(String token,String openUid) {
 		System.out.println(token);
 		return null;
 	}
 
-	public ResultDTO<Object> controlDevice(String token, String order, String deviceID, String devicePlace, String deviceValue) {
+	@Override
+	public ResultDTO<Object> controlDevice(String accessToken, String openUid, String order, String deviceID,
+			String devicePlace, Object value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public KVEntity queryDevice(String token, String order, String deviceID) {
+	public ResultDTO<Object> queryDevice(String token,String openUid, String order, String deviceID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

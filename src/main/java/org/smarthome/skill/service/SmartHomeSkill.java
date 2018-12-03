@@ -4,7 +4,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.smarthome.skill.dto.ResultDTO;
 import org.smarthome.skill.enums.ResultEnum;
 import org.smarthome.skill.enums.SkillPlatformEnum;
-import org.smarthome.skill.service.impl.DuerOSSkillServiceImpl;
+import org.smarthome.skill.service.impl.AligenieImpl;
+import org.smarthome.skill.service.impl.AlphaImpl;
+import org.smarthome.skill.service.impl.DuerOSImpl;
+import org.smarthome.skill.service.impl.MobvoiImpl;
+import org.smarthome.skill.service.impl.OrionImpl;
+import org.smarthome.skill.service.impl.RokidImpl;
+import org.smarthome.skill.service.impl.SpeechImpl;
+import org.smarthome.skill.service.impl.XiaoMiImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,25 +64,31 @@ public class SmartHomeSkill {
 		SkillService skillService = null;
 		switch (spEnum) {
 		case BAIDU_DUEROS:// 百度DuerOS
-			skillService = new DuerOSSkillServiceImpl();
+			skillService = new DuerOSImpl();
 			break;
 		case TMALL_ALIGENIE:// 天猫AliGenie
+			skillService = new AligenieImpl();
 			break;
 		case XIAOMI_SKILL:// 小米IOT
+			skillService = new XiaoMiImpl();
 			break;
 		case ROKID_SKILL:// 若琪Rokid
+			skillService = new RokidImpl();
 			break;
 		case MOBVOI_SKILL:// 出门问问Mobvoi
+			skillService = new MobvoiImpl();
 			break;
 		case LIEBIAO_ORION:// 猎豹Orion
+			skillService = new OrionImpl();
 			break;
 		case JD_ALPHA:// 京东JDAlpha
+			skillService = new AlphaImpl();
 			break;
 		case SPEECH_DUI:// 思必驰dui
+			skillService = new SpeechImpl();
 			break;
-
 		default:
-			break;
+			return ResultDTO.entiey(-5);
 		}
 		return skillService.skillOperation(shss, json);
 	}

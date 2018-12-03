@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smarthome.skill.dto.ResultDTO;
@@ -16,16 +17,23 @@ import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseAdditionalAppl
 import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseAdditionalGroupDetails;
 import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseDiscoveredAppliances;
 import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseDiscoveredGroups;
+import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseHeader;
 import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponsePayload;
+import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseRoot;
+import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseTemperature;
+import org.smarthome.skill.jsonbean.dueros.response.DuerOSResponseTemperatureMode;
 import org.smarthome.skill.service.SkillService;
 import org.smarthome.skill.service.SmartHomeSkillService;
 import org.smarthome.skill.util.DuerOSSkillUtil;
+import org.smarthome.skill.util.SkillDevicesOrderUtil;
+import org.smarthome.skill.util.SkillValueUtil;
+import org.smarthome.skill.util.TypeUtil;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-public class DuerOSSkillServiceImpl implements SkillService {
+public class DuerOSImpl implements SkillService {
 
 	public Object skillOperation(SmartHomeSkillService shss, String json) {
 		BaiduRequestRoot baiduRequest = null;
@@ -39,9 +47,9 @@ public class DuerOSSkillServiceImpl implements SkillService {
 		if (namespace.equals("DuerOS.ConnectedHome.Discovery")) {
 			return discovery(shss, baiduRequest);
 		} else if (namespace.equals("DuerOS.ConnectedHome.Control")) {
-			return control(shss, json);
+			return control(shss, baiduRequest);
 		} else {
-			return query(shss, json);
+			return query(shss, baiduRequest);
 		}
 	}
 
@@ -53,7 +61,9 @@ public class DuerOSSkillServiceImpl implements SkillService {
 	 * @return
 	 */
 	private Object discovery(SmartHomeSkillService shss, BaiduRequestRoot baiduRequest) {
-		List<DeviceEntity> list = shss.discoveryDevice(baiduRequest.getPayload().getAccessToken());
+		String accessToken = baiduRequest.getPayload().getAccessToken();
+		String openUid = baiduRequest.getPayload().getOpenUid();
+		List<DeviceEntity> list = shss.discoveryDevice(accessToken, openUid);
 		DuerOSResponsePayload duerOSResponsePayload = new DuerOSResponsePayload();
 		List<DuerOSResponseDiscoveredAppliances> discoveredAppliancesList = new ArrayList<DuerOSResponseDiscoveredAppliances>();
 		List<DuerOSResponseDiscoveredGroups> discoveredGroupsList = new ArrayList<DuerOSResponseDiscoveredGroups>();
@@ -164,8 +174,65 @@ public class DuerOSSkillServiceImpl implements SkillService {
 	 * @param json
 	 * @return
 	 */
-	private Object control(SmartHomeSkillService shss, String json) {
-		return null;
+	private Object control(SmartHomeSkillService shss, BaiduRequestRoot baiduRequest) {
+		String accessToken = baiduRequest.getPayload().getAccessToken();
+		String openUid = baiduRequest.getPayload().getOpenUid();
+		String namespace = baiduRequest.getHeader().getNamespace();
+		String name = baiduRequest.getHeader().getName();
+		DuerOSResponseHeader baiduRespHeader = packHeader(namespace, name.replace("Request", "Confirmation"));
+		String applianceId = baiduRequest.getPayload().getAppliance().getApplianceId();
+		Object val = null;
+		if (name.equals("IncrementTemperatureRequest")) {// 调高空调温度
+			val = baiduRequest.getPayload().getDeltaValue().getValue();
+		} else if (name.equals("DecrementTemperatureRequest")) {// 调低空调温度
+			val = baiduRequest.getPayload().getDeltaValue().getValue();
+		} else if (name.equals("SetTemperatureRequest")) {// 设置空调温度
+			val = baiduRequest.getPayload().getTargetTemperature().getValue();
+			if ("CELSIUS".equals(baiduRequest.getPayload().getTargetTemperature().getScale())) {
+				if ("min".equals(String.valueOf(val))) {
+					val = 16;
+				} else if ("max".equals(String.valueOf(val))) {
+					val = 30;
+				} else if ((new Double(String.valueOf(val)).intValue()) < 16) {
+					val = 16;
+				} else if ((new Double(String.valueOf(val)).intValue()) > 30) {
+					val = 30;
+				}
+			}
+		} else if (name.equals("SetModeRequest")) {// 设置空调模式
+			val = SkillValueUtil.getAirMode(baiduRequest.getPayload().getMode().getValue());
+		} else if (name.equals("SetTVChannelRequest")) {// 设置电视频道
+			val = baiduRequest.getPayload().getDeltaValue().getValue();
+		} else if (name.equals("SetFanSpeedRequest")) {// 空调风速
+			int speed = baiduRequest.getPayload().getFanSpeed().getValue();
+			if (speed > 3) {
+				speed = 3;
+			}
+			val = speed;
+		} else if (name.equals("TimingTurnOnRequest")) {// 定时打开(时间戳)
+			val = baiduRequest.getPayload().getTimestamp().getValue();
+		}
+		name = SkillDevicesOrderUtil.getAiyunCmd(name, 2);
+		ResultDTO<Object> result = shss.controlDevice(accessToken, openUid, name, applianceId, null, val);
+		int code = result.getCode();
+		if (1 != code) {
+			DuerOSResponseHeader baiduRespErrorHeader = null;
+			if (-5 == code) {// 参数错误
+				baiduRespErrorHeader = packHeader(namespace, "UnsupportedOperationError");
+			} else if (-8 == code) {// 操作错误
+				baiduRespErrorHeader = packHeader(namespace, "UnsupportedOperationError");
+			} else if (-1 == code) {// "无此设备类型"
+				baiduRespErrorHeader = packHeader(namespace, "UnexpectedInformationReceivedError");
+			} else if (-4 == code) {// "参数无效"
+				baiduRespErrorHeader = packHeader(namespace, "ValueOutOfRangeError");
+			} else if (-3 == code) {// "指令发送失败"
+				baiduRespErrorHeader = packHeader(namespace, "TargetOfflineError");
+			} else {// "指令发送异常"
+				baiduRespErrorHeader = packHeader(namespace, "DriverInternalError");
+			}
+			return packRoot(baiduRespErrorHeader, new DuerOSResponsePayload());
+		}
+		return packRoot(baiduRespHeader, new DuerOSResponsePayload());
 	}
 
 	/**
@@ -175,8 +242,52 @@ public class DuerOSSkillServiceImpl implements SkillService {
 	 * @param json
 	 * @return
 	 */
-	private Object query(SmartHomeSkillService shss, String json) {
-		return null;
+	private Object query(SmartHomeSkillService shss, BaiduRequestRoot baiduRequest) {
+		String accessToken = baiduRequest.getPayload().getAccessToken();
+		String openUid = baiduRequest.getPayload().getOpenUid();
+		String namespace = baiduRequest.getHeader().getNamespace();
+		String name = baiduRequest.getHeader().getName();
+		String applianceId = baiduRequest.getPayload().getAppliance().getApplianceId();
+		DuerOSResponseHeader baiduRespHeader = packHeader(namespace, name.replace("Request", "Response"));
+		DuerOSResponsePayload duerOSResponsePayload = new DuerOSResponsePayload();
+		ResultDTO<Object> result = shss.queryDevice(accessToken, openUid, name, applianceId);
+		if (result.getCode() == 1) {
+			if (name.equals("GetTemperatureReadingRequest")) {
+				DuerOSResponseTemperature duerOSResponseTemperature2 = new DuerOSResponseTemperature();
+				duerOSResponseTemperature2.setValue(TypeUtil.toInt(result.getData()));
+				duerOSResponseTemperature2.setScale("CELSIUS");
+				duerOSResponsePayload.setTemperatureReading(duerOSResponseTemperature2);
+				return packRoot(baiduRespHeader, duerOSResponsePayload);
+			} else if (name.equals("GetTargetTemperatureRequest")) {
+				DuerOSResponseTemperature duerOSResponseTemperature = new DuerOSResponseTemperature();
+				duerOSResponseTemperature.setValue(TypeUtil.toInt(result.getData()));
+				duerOSResponseTemperature.setScale("CELSIUS");
+				duerOSResponsePayload.setTemperature(duerOSResponseTemperature);
+				duerOSResponsePayload.setApplianceResponseTimestamp(SkillValueUtil.getTime());
+				DuerOSResponseTemperatureMode duerOSResponseTemperatureMode = new DuerOSResponseTemperatureMode();
+				duerOSResponseTemperatureMode.setValue("AUTO");
+				duerOSResponseTemperatureMode.setFriendlyName("自动模式");
+				duerOSResponsePayload.setTemperatureMode(duerOSResponseTemperatureMode);
+				return packRoot(baiduRespHeader, duerOSResponsePayload);
+			}
+		}
+		return packRoot(packHeader(namespace, "UnsupportedOperationError"), new DuerOSResponsePayload());
+	}
+
+	private DuerOSResponseHeader packHeader(String namespace, String name) {
+		DuerOSResponseHeader baiduRespHeader = new DuerOSResponseHeader();
+		baiduRespHeader.setNamespace(namespace);
+		baiduRespHeader.setName(name);
+		baiduRespHeader.setMessageId(UUID.randomUUID().toString());
+		baiduRespHeader.setPayloadVersion("1");
+		return baiduRespHeader;
+	}
+
+	private DuerOSResponseRoot packRoot(DuerOSResponseHeader header, DuerOSResponsePayload payload) {
+		DuerOSResponseRoot rootRespRoot = new DuerOSResponseRoot();
+		rootRespRoot.setHeader(header);
+		rootRespRoot.setPayload(payload);
+		return rootRespRoot;
 	}
 
 }
