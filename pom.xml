@@ -2,11 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.smarthome</groupId>
-	<artifactId>skill</artifactId>
+	<groupId>cn.huangdayu</groupId>
+	<artifactId>smarthome-skill</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>skill Maven Webapp</name>
+	<name>smarthome-skill Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -61,7 +61,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>skill</finalName>
+		<finalName>smarthome-skill</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>skill</name>
+	<name>smarthome-skill</name>
 	<comment></comment>
 	<projects>
 	</projects>
+	<buildSpec>
+	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
