@@ -86,7 +86,9 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 }
 ```
 
-调用`cn.huangdayu.smarthome.skill.service.SmartHomeSkill.skillOperation()`方法    
+## 调用处理结果
+
+类直接调用`cn.huangdayu.smarthome.skill.SmartHomeSkill`类的`skillOperation()`方法    
 
 ```java
 	/**
@@ -102,9 +104,7 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 	}
 ```
 
-## 调用处理结果
-
-类直接调用    
+示例  
 
 ```java
 	@ResponseBody

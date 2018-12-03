@@ -2,8 +2,8 @@ package org.smarthome.skill.test;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.huangdayu.smarthome.skill.SmartHomeSkill;
 import cn.huangdayu.smarthome.skill.enums.SkillPlatformEnum;
-import cn.huangdayu.smarthome.skill.service.SmartHomeSkill;
 import cn.huangdayu.smarthome.skill.service.SmartHomeSkillService;
 
 public class Test {

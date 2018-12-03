@@ -1,10 +1,12 @@
-package cn.huangdayu.smarthome.skill.service;
+package cn.huangdayu.smarthome.skill;
 
 import org.apache.commons.lang3.StringUtils;
 
 import cn.huangdayu.smarthome.skill.dto.ResultDTO;
 import cn.huangdayu.smarthome.skill.enums.ResultEnum;
 import cn.huangdayu.smarthome.skill.enums.SkillPlatformEnum;
+import cn.huangdayu.smarthome.skill.service.SkillService;
+import cn.huangdayu.smarthome.skill.service.SmartHomeSkillService;
 import cn.huangdayu.smarthome.skill.service.impl.AligenieImpl;
 import cn.huangdayu.smarthome.skill.service.impl.AlphaImpl;
 import cn.huangdayu.smarthome.skill.service.impl.DuerOSImpl;
