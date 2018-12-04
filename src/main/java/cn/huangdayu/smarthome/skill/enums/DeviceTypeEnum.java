@@ -56,5 +56,14 @@ public enum DeviceTypeEnum {
 	KETTLE, // 热水壶
 	WEBCAM, // 摄像头
 	ROBOT, // 机器人
-	WINDOW_OPENER,// 开窗器
+	WINDOW_OPENER;// 开窗器
+
+	public static DeviceTypeEnum getEnum(String v) {
+		for (DeviceTypeEnum deviceTypeEnum : DeviceTypeEnum.values()) {
+			if (deviceTypeEnum.toString().equals(v)) {
+				return deviceTypeEnum;
+			}
+		}
+		return null;
+	}
 }

@@ -37,20 +37,20 @@ import cn.huangdayu.smarthome.skill.util.TypeUtil;
 public class DuerOSImpl implements SkillService {
 
 	public Object skillOperation(SmartHomeSkillService shss, String json) {
-		BaiduRequestRoot baiduRequest = null;
+		BaiduRequestRoot baiduRequestRoot = null;
 		try {
 			// baiduRequest=JSON.parseObject(json,new TypeReference<BaiduRequestRoot>(){});
-			baiduRequest = JSONObject.parseObject(json, BaiduRequestRoot.class);
+			baiduRequestRoot = JSONObject.parseObject(json, BaiduRequestRoot.class);
 		} catch (Exception e) {
 			return ResultDTO.entiey(-5);
 		}
-		String namespace = baiduRequest.getHeader().getNamespace();
+		String namespace = baiduRequestRoot.getHeader().getNamespace();
 		if (namespace.equals("DuerOS.ConnectedHome.Discovery")) {
-			return discovery(shss, baiduRequest);
+			return discovery(shss, baiduRequestRoot);
 		} else if (namespace.equals("DuerOS.ConnectedHome.Control")) {
-			return control(shss, baiduRequest);
-		} else {
-			return query(shss, baiduRequest);
+			return control(shss, baiduRequestRoot);
+		} else {//DuerOS.ConnectedHome.Query
+			return query(shss, baiduRequestRoot);
 		}
 	}
 
