@@ -2,6 +2,10 @@
 
 国内语音交互平台智能家居技能SDK  
 
+# 需求
+
+解决语音交互平台智能家居技能协议适配问题  
+
 # 支持的平台  
 
 - [百度DuerOS](https://dueros.baidu.com)
@@ -43,6 +47,9 @@ import java.util.List;
 import cn.huangdayu.smarthome.skill.dto.ResultDTO;
 import cn.huangdayu.smarthome.skill.entity.DeviceEntity;
 import cn.huangdayu.smarthome.skill.service.SmartHomeSkillService;
+import org.springframework.stereotype.Service;
+
+@Service
 public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 	/**
 	 * 发现设备
@@ -107,9 +114,12 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 示例  
 
 ```java
+	@Autowired
+	private SmartHomeSkillService smartHomeSkillService;
+	
 	@ResponseBody
 	@RequestMapping(value = "/skillOperation", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public Object skillOperation(HttpServletRequest request) {
-		return SmartHomeSkill.skillOperation(new SmartHomeSkillServiceImpl(), SkillPlatformEnum.BAIDU_DUEROS, request);
+		return SmartHomeSkill.skillOperation(smartHomeSkillService, SkillPlatformEnum.BAIDU_DUEROS, request);
 	}
 ```
