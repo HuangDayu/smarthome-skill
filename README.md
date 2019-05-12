@@ -98,28 +98,27 @@ public class SmartHomeSkillServiceImpl implements SmartHomeSkillService {
 类直接调用`cn.huangdayu.smarthome.skill.SmartHomeSkill`类的`skillOperation()`方法    
 
 ```java
-	/**
-	 * 
-	 * @param smartHomeSkillService 接口的实现对象
-	 * @param spEnum 平台类型
-	 * @param json 使用序列化后的josn字符串作为参数
-	 * @return 响应的json对象
-	 */
-	public static Object skillOperation(SmartHomeSkillService smartHomeSkillService, SkillPlatformEnum spEnum,
-			String json) {
-		return skillOperation(spEnum, json, smartHomeSkillService);
-	}
+/**
+ * 
+ * @param smartHomeSkillService 接口的实现对象
+ * @param spEnum 平台类型
+ * @param json 使用序列化后的josn字符串作为参数
+ * @return 响应的json对象
+ */
+public static Object skillOperation(SmartHomeSkillService smartHomeSkillService, SkillPlatformEnum spEnum,String json) {
+	return skillOperation(spEnum, json, smartHomeSkillService);
+}
 ```
 
 示例  
 
 ```java
-	@Autowired
-	private SmartHomeSkillService smartHomeSkillService;
+@Autowired
+private SmartHomeSkillService smartHomeSkillService;
 	
-	@ResponseBody
-	@RequestMapping(value = "/skillOperation", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-	public Object skillOperation(HttpServletRequest request) {
-		return SmartHomeSkill.skillOperation(smartHomeSkillService, SkillPlatformEnum.BAIDU_DUEROS, request);
-	}
+@ResponseBody
+@RequestMapping(value = "/skillOperation", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+public Object skillOperation(HttpServletRequest request) {
+	return SmartHomeSkill.skillOperation(smartHomeSkillService, SkillPlatformEnum.BAIDU_DUEROS, request);
+}
 ```
