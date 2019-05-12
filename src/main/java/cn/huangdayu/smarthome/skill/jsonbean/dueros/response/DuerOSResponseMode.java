@@ -1,13 +1,9 @@
 package cn.huangdayu.smarthome.skill.jsonbean.dueros.response;
 
+import lombok.Data;
+
+@Data
 public class DuerOSResponseMode {
 	private String value;
 
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public String getValue() {
-		return this.value;
-	}
 }

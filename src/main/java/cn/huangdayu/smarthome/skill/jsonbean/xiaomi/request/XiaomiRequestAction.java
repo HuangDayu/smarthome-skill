@@ -2,6 +2,9 @@ package cn.huangdayu.smarthome.skill.jsonbean.xiaomi.request;
 
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class XiaomiRequestAction {
 	private int aiid;
 	private String did;

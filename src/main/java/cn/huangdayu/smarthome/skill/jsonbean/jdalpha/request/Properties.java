@@ -1,15 +1,10 @@
 package cn.huangdayu.smarthome.skill.jsonbean.jdalpha.request;
 
+import lombok.Data;
+
+@Data
 public class Properties {
 
 	private String value;
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public String getValue() {
-		return value;
-	}
 
 }

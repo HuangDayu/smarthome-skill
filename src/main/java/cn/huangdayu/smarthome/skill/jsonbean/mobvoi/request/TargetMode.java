@@ -1,14 +1,9 @@
 package cn.huangdayu.smarthome.skill.jsonbean.mobvoi.request;
 
+import lombok.Data;
+
+@Data
 public class TargetMode {
 	private String value;
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
 
 }

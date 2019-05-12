@@ -1,24 +1,11 @@
 package cn.huangdayu.smarthome.skill.jsonbean.rokid.request;
 
+import lombok.Data;
+
+@Data
 public class Authorization {
 
 	private String token;
 	private String type;
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getType() {
-		return type;
-	}
 
 }

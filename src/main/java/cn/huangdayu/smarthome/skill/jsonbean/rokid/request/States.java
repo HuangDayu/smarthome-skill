@@ -2,13 +2,16 @@ package cn.huangdayu.smarthome.skill.jsonbean.rokid.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class States {
+import lombok.Data;
 
-	@JsonProperty("interface")
-	private String interface_;
+@Data
+public class States {
 
 	private String timeOfSample;
 	private Object value;
+
+	@JsonProperty("interface")
+	private String interface_;
 
 	@JsonProperty("interface")
 	public String getInterface_() {
@@ -18,22 +21,6 @@ public class States {
 	@JsonProperty("interface")
 	public void setInterface_(String interface_) {
 		this.interface_ = interface_;
-	}
-
-	public String getTimeOfSample() {
-		return timeOfSample;
-	}
-
-	public void setTimeOfSample(String timeOfSample) {
-		this.timeOfSample = timeOfSample;
-	}
-
-	public Object getValue() {
-		return value;
-	}
-
-	public void setValue(Object value) {
-		this.value = value;
 	}
 
 }
